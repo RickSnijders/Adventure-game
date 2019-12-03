@@ -1,0 +1,748 @@
+var button1 = document.getElementById("button1");
+var button2 = document.getElementById("button2");
+var button3 = document.getElementById("button3");
+var title = document.getElementById("title");
+var description = document.getElementById("description");
+var sleutel = false;
+var geld = 0;
+var kleurGekozen = "";
+var inzet;
+var winst;
+var mes;
+var zaag;
+var para = document.createElement("P");
+	para.id= "geldtxt";
+var btnSellKey = document.createElement("BUTTON");
+	btnSellKey.id= "SellKey";
+var btnSellKeyTxt = document.createElement("P");
+	btnSellKeyTxt.id = "SellKeyTxt";
+var inventory2 = document.createElement("IMG");
+	inventory2.id = "inventoryItem2";
+var score;
+var scoreboard = document.createElement("P");
+	scoreboard.id = "scoretxt";
+var imagePlace = document.createElement("IMG");
+	imagePlace.id = "imageLevel";
+
+document.getElementById("game-container").appendChild(btnSellKey);
+document.getElementById("game-container").appendChild(btnSellKeyTxt);
+document.getElementById("game-container").appendChild(inventory2);
+document.getElementById("game-container").appendChild(scoreboard);
+document.getElementById("game-container").appendChild(imagePlace);
+
+
+function StartGame(){
+	document.getElementById("SellKey").style.display = "none";
+	document.getElementById("title").innerHTML = "The Robbery";
+	document.getElementById("description").innerHTML = "Bij deze game moet je de bank overvallen zonder gepakt te worden!<br>Probeer zoveel mogelijk punten te verzamelen.";
+	document.getElementById("button1").style.display = "none";
+	document.getElementById("button2").innerHTML = "Start";
+	button2.style.display = "inline";
+	document.getElementById("button3").style.display = "none";
+	document.getElementById("button2").setAttribute( "onClick", "LevelOne()" );
+	document.getElementById("inventoryItem").style.display = "none";
+	document.getElementById("inventoryItem2").style.display = "none";
+	geld= 0;
+	sleutel = false;
+	mes = false;
+	para.innerHTML = "€ " + geld;
+	para.style.display = "inline";
+	document.getElementById("game-container").appendChild(para);
+	document.getElementById("geldtxt").style.position = "absolute";
+	document.getElementById("geldtxt").style.top = "125px";
+	document.getElementById("geldtxt").style.right = "280px";
+	document.getElementById("geldtxt").style.fontSize = "30px";
+	document.getElementById("inventoryItem").style.display = "inline";
+	document.getElementById("inventoryItem").setAttribute("src", "images/cartoonbank.jpg");
+	document.getElementById("inventoryItem").style.width = "400px";
+	document.getElementById("inventoryItem").style.position = "absolute";
+	document.getElementById("inventoryItem").style.left = "565px";
+	document.getElementById("inventoryItem").style.top = "335px";
+	document.getElementById("scoretxt").style.display = "none";
+	document.getElementById("imageLevel").style.display = "none";
+	score = 0;
+	score = score + 1000;
+}
+StartGame();
+
+function gameOver(){
+	document.getElementById("title").innerHTML = "GAME OVER";
+	document.getElementById("description").innerHTML = "Klik op de knop om opnieuw te beginnen";
+	document.getElementById("button1").style.display = "none";
+	document.getElementById("button3").style.display = "none";
+	document.getElementById("button2").innerHTML = "Opnieuw";
+	document.getElementById("button2").setAttribute( "onClick", "StartGame()" );	
+	document.getElementById("inventoryItem").style.display = "none";
+	console.log(score);
+	document.getElementById("scoretxt").style.display = "inline";
+	document.getElementById("scoretxt").innerHTML = "Score: " + score;
+	document.getElementById("scoretxt").style.position = "absolute";
+	document.getElementById("scoretxt").style.top = "345px";
+	document.getElementById("scoretxt").style.left = "690px";
+	document.getElementById("scoretxt").style.fontSize = "30px";
+	document.getElementById("scoretxt").style.fontWeight = "bold";
+	document.getElementById("inventoryItem").style.display = "inline";
+	document.getElementById("inventoryItem").setAttribute( "src", "images/Police.png" );
+	document.getElementById("inventoryItem").style.width = "150px";
+	document.getElementById("inventoryItem").style.position = "absolute";
+	document.getElementById("inventoryItem").style.top = "256px";
+	document.getElementById("inventoryItem").style.left = "418px";
+	document.getElementById("imageLevel").style.display = "none";
+
+}
+
+function LevelOne(){
+	document.getElementById("title").innerHTML = "Level 1";
+	document.getElementById("description").innerHTML = "Hoe ga jij de bank binnen?<br> 1) Met geweld<br>  2) Undercover<br>  3) Een tunnel graven";
+	document.getElementById("button1").setAttribute( "onClick", "LevelTwoG()" );	
+	document.getElementById("button2").setAttribute( "onClick", "LevelTwoU()" );	
+	document.getElementById("button3").setAttribute( "onClick", "gameOver()" );	
+	document.getElementById("button1").innerHTML = "Keuze 1";
+	document.getElementById("button2").innerHTML = "Keuze 2";
+	document.getElementById("button3").innerHTML = "Keuze 3";
+	document.getElementById("button1").style.display = "inline-block";
+	document.getElementById("button3").style.display = "inline-block";
+	document.getElementById("inventoryItem").style.display = "inline";
+	document.getElementById("inventoryItem").setAttribute( "src", "images/bankbuiten2.jpg");
+	document.getElementById("inventoryItem").style.position = "absolute";
+	document.getElementById("inventoryItem").style.width = "300px";
+	document.getElementById("inventoryItem").style.left = "618px";
+	document.getElementById("inventoryItem").style.top = "404px";
+	score = score + 500;
+}
+
+function LevelTwoG(){
+	document.getElementById("title").innerHTML = "Level 2";
+	description.innerHTML = "Je gaat de bank binnen met geweld<br> 1) Je breekt de bank binnen met explosieven<br>2) Je neemt een geweer mee<br> 3) Je neemt een boxbeugel mee";
+	button1.setAttribute( "onClick", "gameOver()");
+	button2.setAttribute( "onClick", "LevelThreeG()");
+	button3.setAttribute( "onClick", "gameOver()");
+	document.getElementById("inventoryItem").style.display = "none";
+	score = score + 500;
+	document.getElementById("imageLevel").setAttribute( "src", "images/wapens.png")
+	document.getElementById("imageLevel").style.display = "inline";
+	document.getElementById("imageLevel").style.position = "absolute";
+	document.getElementById("imageLevel").style.top = "380px";
+	document.getElementById("imageLevel").style.left = "580px";
+	document.getElementById("imageLevel").style.width = "400px";
+
+}
+
+function LevelThreeG(){
+	document.getElementById("title").innerHTML = "Level 3";
+	description.innerHTML = "Je ziet een bewaker, wat doe je?<br> 1) Wurg de bewaker<br> 2) Probeer de bewaker te ontwijken<br> 3) Schiet hem dood";
+	button1.setAttribute( "onClick", "gameOver()");
+	button2.setAttribute( "onClick", "gameOver()");
+	button3.setAttribute( "onClick", "LevelFourG()");
+	document.getElementById("inventoryItem").style.display = "none";
+	score = score + 500;
+	document.getElementById("imageLevel").setAttribute( "src", "images/bewaker2.png")
+	document.getElementById("imageLevel").style.display = "inline";
+	document.getElementById("imageLevel").style.position = "absolute";
+	document.getElementById("imageLevel").style.top = "208px";
+	document.getElementById("imageLevel").style.left = "363px";
+	document.getElementById("imageLevel").style.width = "200px";
+}
+
+
+function LevelFourG(){
+	document.getElementById("title").innerHTML = "Level 4";
+	description.innerHTML = "Je ziet een sleutel liggen en een paar munten, pak de sleutel en het geld op.";
+	button1.setAttribute( "onClick", "getSleutel()");
+	button2.setAttribute( "onClick", "LevelFiveG()");
+	button3.style.display = "none";
+	button1.innerHTML = "Sleutel";
+	console.log(sleutel);
+	button2.innerHTML = "Verder";
+	document.getElementById("inventoryItem").style.display = "none";
+	score = score + 550;
+	document.getElementById("imageLevel").setAttribute( "src", "images/grondsleutelmunten.png");
+	document.getElementById("imageLevel").style.display = "inline";
+	document.getElementById("imageLevel").style.position = "absolute";
+	document.getElementById("imageLevel").style.top = "319px";
+	document.getElementById("imageLevel").style.left = "525px";
+	document.getElementById("imageLevel").style.width = "500px";
+}
+
+function getSleutel(){
+	sleutel = true;
+	document.getElementById("imageLevel").setAttribute( "src", "images/grond2.png");
+	if(sleutel == true){
+	button1.style.display = "none";
+	}
+	geld= geld + randomGeld();
+}
+
+function LevelFiveG(){
+	document.getElementById("title").innerHTML = "Level 5";
+	document.getElementById("button1").innerHTML = "Keuze 1";
+	document.getElementById("button2").innerHTML = "Keuze 2";
+	document.getElementById("button3").innerHTML = "Keuze 3";
+	button3.style.display = "inline";
+	button1.style.display = "inline";
+	button1.setAttribute( "onClick", "gameOver()");
+	button2.setAttribute( "onClick", "LevelSixG()");
+	description.innerHTML = "Je komt aan bij de kluis, hoe ga je deze openmaken?<br>1) Door hem te kraken<br>2) Door de kluis op te blazen<br> 3) Gebruik je sleutel";
+	button3.setAttribute( "onClick", "LevelFiveG()");
+	document.getElementById("inventoryItem").style.display = "none";
+	document.getElementById("imageLevel").setAttribute( "src", "images/kluis2.png");
+	document.getElementById("imageLevel").style.display = "inline";
+	document.getElementById("imageLevel").style.position = "absolute";
+	document.getElementById("imageLevel").style.top = "223px";
+	document.getElementById("imageLevel").style.left = "251px";
+	document.getElementById("imageLevel").style.width = "400px";
+	score = score + 550;
+	if(sleutel==true){
+		button3.setAttribute( "onClick", "LevelSixGSleutel()");
+		document.getElementById("inventoryItem").style.display= "inline";
+		document.getElementById("inventoryItem").setAttribute( "src", "images/key.png" );
+		document.getElementById("inventoryItem").style.position = "absolute";
+		document.getElementById("inventoryItem").style.top = "90px";
+		document.getElementById("inventoryItem").style.left = "280px";
+		document.getElementById("inventoryItem").style.width = "80px";
+	}else {
+		alert("Je hebt geen sleutel");
+	}
+	para.innerHTML = "€ " + geld;
+	document.getElementById("game-container").appendChild(para);
+}
+
+function LevelSixG(){
+	title.innerHTML = "Level 6";
+	button1.innerHTML = "Keuze 1";
+	button2.innerHTML = "Keuze 2";
+	button3.innerHTML = "Keuze 3";
+	button1.setAttribute( "onClick", "LevelSix2G()" );
+	button2.setAttribute( "onClick", "gameOver()" );
+	button3.setAttribute( "onClick", "gameOver()" );
+	description.innerHTML = "De kluis gaat open, maar het alarm gaat af. Welke kleur draad moet hij doorknippen om het alarm te stoppen<br>1) Blauw<br>2) Geel<br>3) Groen";
+	document.getElementById("inventoryItem").style.display = "none";
+	score = score + 600;
+	document.getElementById("imageLevel").setAttribute( "src", "images/alarm2.png");
+	document.getElementById("imageLevel").style.display = "inline";
+	document.getElementById("imageLevel").style.position = "absolute";
+	document.getElementById("imageLevel").style.top = "369px";
+	document.getElementById("imageLevel").style.left = "648px";
+	document.getElementById("imageLevel").style.width = "250px";
+	if(sleutel ==true){
+		document.getElementById("inventoryItem").style.display= "inline";
+		document.getElementById("inventoryItem").setAttribute( "src", "images/key.png" );
+		document.getElementById("inventoryItem").style.position = "absolute";
+		document.getElementById("inventoryItem").style.top = "90px";
+		document.getElementById("inventoryItem").style.left = "280px";
+		document.getElementById("inventoryItem").style.width = "80px";
+	}
+}
+
+function LevelSix2G(){
+	title.innerHTML = "Level 6.2";
+	button1.innerHTML = "Keuze 1";
+	button2.innerHTML = "Keuze 2";
+	button3.innerHTML = "Keuze 3";
+	button1.setAttribute( "onClick", "gameOver()" );
+	button2.setAttribute( "onClick", "LevelSevenG()" );
+	button3.setAttribute( "onClick", "gameOver()" );
+	description.innerHTML = "Je bent in de kluis en het alarm is gestopt.<br>Hoe neem je het goud mee?<br>1) Met een rugzak<br>2) Met boodschappentassen<br> 3) In je broekzakken";
+	document.getElementById("inventoryItem").style.display = "none";
+	document.getElementById("imageLevel").setAttribute( "src", "images/openkluis2.png");
+	document.getElementById("imageLevel").style.display = "inline";
+	document.getElementById("imageLevel").style.position = "absolute";
+	document.getElementById("imageLevel").style.top = "409px";
+	document.getElementById("imageLevel").style.left = "648px";
+	document.getElementById("imageLevel").style.width = "230px";
+	score = score + 600;
+	if(sleutel ==true){
+		document.getElementById("inventoryItem").style.display= "inline";
+		document.getElementById("inventoryItem").setAttribute( "src", "images/key.png" );
+		document.getElementById("inventoryItem").style.position = "absolute";
+		document.getElementById("inventoryItem").style.top = "90px";
+		document.getElementById("inventoryItem").style.left = "280px";
+		document.getElementById("inventoryItem").style.width = "80px";
+	}
+}
+
+function LevelSixGSleutel(){
+	sleutel = false;
+	title.innerHTML = "Level 6";
+	button1.innerHTML = "Keuze 1";
+	button2.innerHTML = "Keuze 2";
+	button3.innerHTML = "Keuze 3";
+	button1.setAttribute( "onClick", "gameOver()" );
+	button2.setAttribute( "onClick", "LevelSevenG()" );
+	button3.setAttribute( "onClick", "gameOver()" );
+	description.innerHTML = "De kluis gaat open, het alarm is niet afgegaan door de sleutel.<br>Hoe neem je het goud mee?<br>1) Met een rugzak<br>2) Met boodschappentassen<br> 3) In je broekzakken";
+	document.getElementById("inventoryItem").style.display = "none";
+	document.getElementById("imageLevel").setAttribute( "src", "images/openkluis2.png");
+	document.getElementById("imageLevel").style.display = "inline";
+	document.getElementById("imageLevel").style.position = "absolute";
+	document.getElementById("imageLevel").style.top = "409px";
+	document.getElementById("imageLevel").style.left = "648px";
+	document.getElementById("imageLevel").style.width = "230px";
+	score = score + 600;
+
+}
+
+function LevelSevenG(){
+	title.innerHTML = "Level 7";
+	button1.innerHTML = "Keuze 1";
+	button2.innerHTML = "Keuze 2";
+	button3.innerHTML = "Keuze 3";
+	button1.style.display ="inline";
+	button3.style.display ="inline";
+	button1.setAttribute( "onClick", "LevelEightG()" );
+	button2.setAttribute( "onClick", "gameOver()" );
+	button3.setAttribute( "onClick", "gameOver()" );
+	description.innerHTML = "Je hebt alle buit bij je hoe verlaat je de bank?<br>1) Via de achteruitgang<br>2) Via het dak<br>3) Via de hoofdingang";
+	document.getElementById("inventoryItem").style.display = "none";
+	document.getElementById("imageLevel").setAttribute( "src", "images/geldtassen2.png");
+	document.getElementById("imageLevel").style.display = "inline";
+	document.getElementById("imageLevel").style.position = "absolute";
+	document.getElementById("imageLevel").style.top = "383px";
+	document.getElementById("imageLevel").style.left = "639px";
+	document.getElementById("imageLevel").style.width = "265px";
+	score = score + 650;
+	geld= geld + 20000;
+	if(sleutel ==true){
+		document.getElementById("inventoryItem").style.display= "inline";
+		document.getElementById("inventoryItem").setAttribute( "src", "images/key.png" );
+		document.getElementById("inventoryItem").style.position = "absolute";
+		document.getElementById("inventoryItem").style.top = "90px";
+		document.getElementById("inventoryItem").style.left = "280px";
+		document.getElementById("inventoryItem").style.width = "80px";
+	}
+}
+
+function colorRed(){
+	kleurGekozen = "Red";
+	button1.setAttribute( "onClick", "");
+	button2.style.display = "none";
+	button3.style.display = "inline";
+	
+}
+
+function colorBlack(){
+	kleurGekozen = "Black";
+	button1.style.display = "none";
+	button2.setAttribute( "onClick", "");
+	button3.style.display = "inline";
+}
+
+function Inleggen(){
+	inzet = 5000;
+	if( geld <5000){
+		alert("Je hebt niet genoeg geld");
+		button2.style.display = "inline";
+		button2.html = "Verder";
+		button2.setAttribute( "onClick", "LevelNineG()" );
+	}else{
+		button1.style.display = "none";
+		button3.style.display = "none";
+		button2.style.display = "inline";
+		button2.innerHTML = "Verder";
+	 	if(kleurGekozen == randomColor()){
+			winst = 2 * Number(inzet);
+			geld = Number(geld) + Number(winst);
+			alert("Je hebt gewonnen, je wint € " + winst);
+		}else{
+			geld -= inzet;
+			alert("Je hebt verloren, je verliest € " + inzet);
+		}
+		console.log(winst);
+		button2.setAttribute( "onClick", "LevelNineG()" );
+		para.innerHTML = "€ " + geld;
+		button1.style.display = "inline";
+		button1.innerHTML = "Roulette";
+		button1.setAttribute( "onClick", "LevelEightG()");
+	}
+	
+}
+	
+function LevelEightG(){
+	title.innerHTML = "Level 8";
+	button1.innerHTML = "Red";
+	button2.innerHTML = "Black";
+	button3.innerHTML = "€5000";
+	button1.setAttribute( "onClick", "colorRed()" );
+	button2.setAttribute( "onClick", "colorBlack()" );
+	button3.setAttribute( "onClick", "Inleggen()" );
+	button1.style.display = "inline";
+	button2.style.display = "inline";
+	button3.style.display = "none";
+	description.innerHTML = "Je ben veilig de bank uitgekomen en hebt besloten naar het casino te gaan.<br>Je gaat roulette doen.<br>";
+	score = score + 700;
+	para.innerHTML = "€ " + geld;
+	document.getElementById("game-container").appendChild(para);
+	document.getElementById("geldtxt").style.position = "absolute";
+	document.getElementById("geldtxt").style.top = "125px";
+	document.getElementById("geldtxt").style.right = "280px";
+	document.getElementById("inventoryItem").style.display = "none";
+
+	document.getElementById("imageLevel").setAttribute( "src", "images/casino2.png");
+	document.getElementById("imageLevel").style.display = "inline";
+	document.getElementById("imageLevel").style.position = "absolute";
+	document.getElementById("imageLevel").style.top = "335px";
+	document.getElementById("imageLevel").style.left = "607px";
+	document.getElementById("imageLevel").style.width = "300px";
+	if(sleutel ==true){
+		document.getElementById("inventoryItem").style.display= "inline";
+		document.getElementById("inventoryItem").setAttribute( "src", "images/key.png" );
+		document.getElementById("inventoryItem").style.position = "absolute";
+		document.getElementById("inventoryItem").style.top = "90px";
+		document.getElementById("inventoryItem").style.left = "280px";
+		document.getElementById("inventoryItem").style.width = "80px";
+	}
+}
+
+function LevelNineG(){
+	title.innerHTML = "Level 9";
+	button1.innerHTML = "Ja";
+	button2.innerHTML = "Nee";
+	button1.style.display = "inline";
+	button2.style.display = "inline";
+	button3.style.display = "none";
+	button1.setAttribute( "onClick", "WelMes()");
+	button2.setAttribute( "onClick", "LevelTenG()");
+	description.innerHTML = "Je loopt van het casino naar huis en ziet onderweg een mes liggen.<br>Neem je hem mee?";
+	document.getElementById("inventoryItem").style.display = "none";
+	document.getElementById("imageLevel").setAttribute( "src", "images/grondmes.png");
+	document.getElementById("imageLevel").style.display = "inline";
+	document.getElementById("imageLevel").style.position = "absolute";
+	document.getElementById("imageLevel").style.top = "335px";
+	document.getElementById("imageLevel").style.left = "607px";
+	document.getElementById("imageLevel").style.width = "300px";
+	score = score + 700;
+	if(sleutel ==true){
+		document.getElementById("inventoryItem").style.display= "inline";
+		document.getElementById("inventoryItem").setAttribute( "src", "images/key.png" );
+		document.getElementById("inventoryItem").style.position = "absolute";
+		document.getElementById("inventoryItem").style.top = "90px";
+		document.getElementById("inventoryItem").style.left = "280px";
+		document.getElementById("inventoryItem").style.width = "80px";
+	}
+}
+
+function WelMes(){
+	mes = true;
+	LevelTenG();
+	console.log(mes);
+	document.getElementById("game-container").appendChild(inventory2);
+	document.getElementById("inventoryItem2").setAttribute( "src", "images/mes2.png" );
+	document.getElementById("inventoryItem2").style.display = "inline";
+	document.getElementById("inventoryItem2").style.position = "absolute";
+	document.getElementById("inventoryItem2").style.width = "132px";
+
+	if(sleutel==true){
+		document.getElementById("inventoryItem2").style.top = "105px";
+		document.getElementById("inventoryItem2").style.left = "360px";
+	}
+	else{
+		document.getElementById("inventoryItem2").style.top = "105px";
+		document.getElementById("inventoryItem2").style.left = "275px";
+	}
+
+
+}
+
+function LevelTenG(){
+	title.innerHTML = "Level 10";
+	button1.innerHTML = "Keuze 1";
+	button2.innerHTML = "Keuze 2";
+	button3.innerHTML = "Keuze 3";
+	button1.style.display = "inline";
+	button2.style.display = "inline";
+	button3.style.display = "inline";
+	para.innenHTML = "€ " + geld;
+	button1.setAttribute( "onClick", "gameOver()");
+	button2.setAttribute( "onClick", "Win()");
+	button3.setAttribute( "onClick", "buyKnife()");
+	description.innerHTML = "Je bent bijna thuis maar er komt een groep jongeren op je af.<br>Ze willen vechten met je, wat doe je?<br>1) Gebruik je vuisten<br> 2) Gebruik je mes<br><span id=testtxt> 3) Koop een mes voor €10000<span>";
+	document.getElementById("inventoryItem").style.display = "none";
+	document.getElementById("imageLevel").style.display = "none";
+	score = score + 750;
+	if(geld<10000){
+		button3.setAttribute( "onClick", "NoMoney()" );
+	}
+	if(mes == false){
+		button2.setAttribute( "onClick", "");
+		button2.innerHTML ="Je hebt geen mes";
+	}
+	if(sleutel ==true){
+		document.getElementById("inventoryItem").style.display= "inline";
+		document.getElementById("inventoryItem").setAttribute( "src", "images/key.png" );
+		document.getElementById("inventoryItem").style.position = "absolute";
+		document.getElementById("inventoryItem").style.top = "90px";
+		document.getElementById("inventoryItem").style.left = "280px";
+		document.getElementById("inventoryItem").style.width = "80px";		
+		btnSellKey.innerHTML = "€15000";
+		btnSellKeyTxt.innerHTML = "Verkoop je sleutel hier voor €15000!";
+		document.getElementById("game-container").appendChild(btnSellKey);
+		document.getElementById("game-container").appendChild(btnSellKeyTxt);
+		document.getElementById("SellKey").setAttribute( "onClick", "SellingKey()" );
+		document.getElementById("SellKey").style.display = "inline";
+		document.getElementById("SellKey").style.position = "absolute";
+		document.getElementById("SellKey").style.top = "448px";
+		document.getElementById("SellKey").style.left = "725px";
+		document.getElementById("SellKeyTxt").style.position = "absolute";
+		document.getElementById("SellKeyTxt").style.top = "427px";
+		document.getElementById("SellKeyTxt").style.left = "647px";
+		document.getElementById("SellKeyTxt").style.display = "inline";
+		document.getElementById("scoretxt").style.fontWeight = "bold";
+		
+	}
+	if(mes==true){
+		document.getElementById("testtxt").style.display="none";
+		button3.style.display = "none";
+	}
+}
+
+function SellingKey(){
+	geld = Number(geld) + 15000;
+	steutel = false;
+	para.innerHTML = "€ " + geld;
+	document.getElementById("geldtxt").style.display = "inline";
+	document.getElementById("SellKey").style.display = "none";
+	document.getElementById("SellKeyTxt").style.display = "none";
+	document.getElementById("inventoryItem").style.display = "none";
+	if(mes == true){
+		document.getElementById("inventoryItem2").style.top = "105px";
+		document.getElementById("inventoryItem2").style.left = "275px";
+	}
+}
+
+function NoMoney(){
+	alert("Je hebt niet genoeg geld");
+}
+
+function buyKnife(){
+	geld = geld - 10000;
+	mes = true;
+	LevelTenG();
+	button3.style.display = "none";
+	para.innerHTML = "€ " + geld;
+}
+
+function Win(){
+	if(zaag==false){
+		alert("Je hebt geen zaag");
+		LevelElevenU();
+	}else{
+		document.getElementById("SellKey").style.display = "none";
+		document.getElementById("SellKeyTxt").style.display = "none";
+		title.innerHTML = "Gewonnen";
+		description.innerHTML = "Je hebt de bank overvallen en bent veilig thuis gekomen.";
+		button1.innerHTML = "Opnieuw";
+		button2.style.display = "none";
+		button3.style.display = "none";
+		button1.setAttribute( "onClick", "StartGame()");
+		document.getElementById("inventoryItem").style.display="none";
+		document.getElementById("inventoryItem2").style.display="none";
+		para.innerHTML = "€ " + geld;
+		score = score + (Number(geld) * 3);
+		score = score + 1200;
+		document.getElementById("scoretxt").style.display = "inline";
+		document.getElementById("scoretxt").innerHTML = "Score: " + score;
+		document.getElementById("scoretxt").style.position = "absolute";
+		document.getElementById("scoretxt").style.top = "345px";
+		document.getElementById("scoretxt").style.left = "690px";
+		document.getElementById("scoretxt").style.fontSize = "30px";
+
+	}
+	
+}
+
+function LevelTwoU(){
+	button1.innerHTML = "Keuze 1";
+	button2.innerHTML = "Keuze 2";
+	button3.innerHTML = "Keuze 3";
+	document.getElementById("title").innerHTML = "Level 2";
+	description.innerHTML = "Je gaat undercover de bank binnen.<br> 1) Je verkleedt je als een medewerker<br>2) Je verkleedt je als een bewaker<br> 3) Je verkleedt je als een schoonmaker";
+	button1.setAttribute( "onClick", "LevelThreeU()");
+	button2.setAttribute( "onClick", "gameOver()");
+	button3.setAttribute( "onClick", "gameOver()");
+	document.getElementById("inventoryItem").style.display = "none";
+	score = score + 500;
+}
+
+function LevelThreeU(){
+	button1.innerHTML = "Keuze 1";
+	button2.innerHTML = "Keuze 2";
+	button3.innerHTML = "Keuze 3";
+	document.getElementById("title").innerHTML = "Level 3";
+	description.innerHTML = "Hoe kom je aan de sleutel van de kluis?<br> 1) Een sleutel stelen van een bewaker<br>2) De sleutel stelen uit het kantoor van de Directeur<br> 3) De sleutel vragen aan een medewerker";
+	button1.setAttribute( "onClick", "gameOver()");
+	button2.setAttribute( "onClick", "LevelFourU()");
+	button3.setAttribute( "onClick", "gameOver()");
+	document.getElementById("inventoryItem").style.display = "none";
+	score = score + 500;
+}
+
+function LevelFourU(){
+	button1.innerHTML = "Keuze 1";
+	button2.innerHTML = "Keuze 2";
+	button3.innerHTML = "Keuze 3";
+	document.getElementById("title").innerHTML = "Level 4";
+	description.innerHTML = "Je wilt naar het kantoor maar de gangen lijken wel een dolhof, welke kan ga je op?<br> 1) Links<br>2) Rechtdoor<br> 3) Rechts";
+	button1.setAttribute( "onClick", "LevelFiveU()");
+	button2.setAttribute( "onClick", "gameOver()");
+	button3.setAttribute( "onClick", "gameOver()");
+	document.getElementById("inventoryItem").style.display = "none";
+	score = score + 550;
+}
+
+function LevelFiveU(){
+	button1.innerHTML = "Keuze 1";
+	button2.innerHTML = "Keuze 2";
+	button3.innerHTML = "Keuze 3";
+	document.getElementById("title").innerHTML = "Level 5";
+	description.innerHTML = "Je komt aan bij het kantoor, maar de directeur ligt te slapen in zijn kantoor<br>Hoe kom je het kantoor binnen?<br> 1) Zachtjes de deur openen<br>2) De directeur uit zijn kantoor lokken<br> 3) Via het openstaande raam";
+	button1.setAttribute( "onClick", "gameOver()");
+	button2.setAttribute( "onClick", "gameOver()");
+	button3.setAttribute( "onClick", "LevelSixU()");
+	document.getElementById("inventoryItem").style.display = "none";
+	score = score + 550;
+}
+
+function LevelSixU(){
+	button1.innerHTML = "Keuze 1";
+	button2.innerHTML = "Keuze 2";
+	button3.innerHTML = "Keuze 3";
+	document.getElementById("title").innerHTML = "Level 6";
+	description.innerHTML = "Je moet de sleutel gaan zoeken, waar ga je zoeken?<br> 1) In de kasten<br>2) In de bureau kastjes<br> 3) In de jas zoeken van de directeur";
+	button1.setAttribute( "onClick", "gameOver()");
+	button2.setAttribute( "onClick", "LevelSevenU()");
+	button3.setAttribute( "onClick", "gameOver()");
+	document.getElementById("inventoryItem").style.display = "none";
+	score = score + 600;
+}
+
+function LevelSevenU(){
+	button1.innerHTML = "Keuze 1";
+	button2.innerHTML = "Keuze 2";
+	button3.innerHTML = "Keuze 3";
+	alert("Je hebt de sleutel gevonden!");
+	document.getElementById("inventoryItem").style.display= "inline";
+	document.getElementById("inventoryItem").setAttribute( "src", "images/key.png" );
+	document.getElementById("inventoryItem").style.position = "absolute";
+	document.getElementById("inventoryItem").style.top = "90px";
+	document.getElementById("inventoryItem").style.left = "280px";
+	document.getElementById("inventoryItem").style.width = "80px";
+	document.getElementById("title").innerHTML = "Level 7";
+	description.innerHTML = "Je hebt de sleutel maar je hoort een bewaker aan komen lopen<br>Wat ga je doen?<br> 1) Verstoppen onder het bureau<br>2) Verstoppen in een kast <br> 3) Verstoppen achter de deur";
+	button1.setAttribute( "onClick", "LevelEightU()");
+	button2.setAttribute( "onClick", "gameOver()");
+	button3.setAttribute( "onClick", "gameOver()");
+	score = score + 600;
+}
+
+function LevelEightU(){
+	button1.innerHTML = "Keuze 1";
+	button2.innerHTML = "Keuze 2";
+	button3.innerHTML = "Keuze 3";
+	document.getElementById("title").innerHTML = "Level 8";
+	description.innerHTML = "De bewaker liep langs en zag je niet. Je gaat op weg naar de kluis. Hoe maak je de kluis open?<br> 1) Je probeert de kluis te kraken<br>2) Je gebruikt je sleutel<br> 3) Je wacht tot iemand de kluis ingaat en je volgt hem";
+	button1.setAttribute( "onClick", "gameOver()");
+	button2.setAttribute( "onClick", "LevelNineU()");
+	button3.setAttribute( "onClick", "gameOver()");
+	score = score + 650;
+	if(sleutel==true){
+		document.getElementById("inventoryItem").style.display= "inline";
+		document.getElementById("inventoryItem").setAttribute( "src", "images/key.png" );
+		document.getElementById("inventoryItem").style.position = "absolute";
+		document.getElementById("inventoryItem").style.top = "90px";
+		document.getElementById("inventoryItem").style.left = "280px";
+		document.getElementById("inventoryItem").style.width = "80px";
+	}
+}
+
+function LevelNineU(){
+	button1.innerHTML = "Keuze 1";
+	button2.innerHTML = "Keuze 2";
+	button3.innerHTML = "Keuze 3";
+	button1.style.display ="inline";
+	button2.style.display ="inline";
+	button3.style.display ="inline";
+	document.getElementById("title").innerHTML = "Level 9";
+	description.innerHTML = "Hoe neem je de buit mee?<br> 1) Verdeeld over 2 boodschappentassen<br>2) In je broekzakken<br> 3) In een rugzak";
+	button1.setAttribute( "onClick", "LevelTenU()");
+	button2.setAttribute( "onClick", "gameOver()");
+	button3.setAttribute( "onClick", "gameOver()");
+	document.getElementById("inventoryItem").style.display = "none";
+	score = score + 700;
+}
+
+function LevelTenU(){
+	document.getElementById("title").innerHTML = "Level 10";
+	description.innerHTML = "Je ziet een zaag en wat geld liggen op je weg naar huis. Neem je het mee?<br> 1) Ja<br>2) Nee";
+	button1.setAttribute( "onClick", "giveZaag()");
+	button2.setAttribute( "onClick", "geenZaag()");
+	button3.setAttribute( "onClick", "LevelElevenU()");
+	button3.style.display = "none";
+	button1.innerHTML = "Ja";
+	button2.innerHTML = "Nee";
+	button3.innerHTML = "Verder";
+	document.getElementById("inventoryItem").style.display = "none";
+	score = score + 750;
+
+}
+
+function giveZaag(){
+	zaag = true;
+	button1.style.display = "none";
+	button2.style.display = "none";
+	button3.style.display = "inline";
+	document.getElementById("inventoryItem").style.display = "inline";
+	document.getElementById("inventoryItem").setAttribute( "src", "images/zaag4.png");
+	document.getElementById("inventoryItem").style.position = "absolute";
+	document.getElementById("inventoryItem").style.top = "115px";
+	document.getElementById("inventoryItem").style.left = "280px";
+	document.getElementById("inventoryItem").style.width = "80px";
+	geld= geld + randomGeld();
+	para.innerHTML = "€ " + geld;
+
+}
+
+function geenZaag(){
+	zaag = false;
+	button1.style.display = "none";
+	button2.style.display = "none";
+	button3.style.display = "inline";
+
+}
+
+function LevelElevenU(){
+	document.getElementById("title").innerHTML = "Level 11";
+	description.innerHTML = "Je komt een hek tegen waar je niet overheen kan klimmen en de politie is naar je aan het zoeken.<br>Hoe kom je hier langs?<br> 1) Probeer over het hek te klimmen<br>2) Probeer het hek door te trappen<br>3) Gebruik een zaag";
+	button1.setAttribute( "onClick", "gameOver()");
+	button2.setAttribute( "onClick", "gameOver()");
+	button3.setAttribute( "onClick", "Win()");
+	button1.style.display = "inline";
+	button2.style.display = "inline";
+	button3.style.display = "inline";
+	button1.innerHTML = "Keuze 1";
+	button2.innerHTML = "Keuze 2";
+	button3.innerHTML = "Keuze 3";
+	score = score + 800;
+	if(zaag == true){
+		document.getElementById("inventoryItem").style.display = "inline";
+		document.getElementById("inventoryItem").setAttribute( "src", "images/zaag4.png");
+		document.getElementById("inventoryItem").style.position = "absolute";
+		document.getElementById("inventoryItem").style.top = "115px";
+		document.getElementById("inventoryItem").style.left = "280px";
+		document.getElementById("inventoryItem").style.width = "80px";
+	}else{
+		document.getElementById("inventoryItem").style.display = "none";
+	}
+}
+
+
+function randomColor(){
+	return roulette[Math.floor(Math.random()*roulette.length)];
+}
+
+var roulette = ["Black", "Red"];
+
+function randomGeld(){
+	return randomGeldSleutel[Math.floor(Math.random()*randomGeldSleutel.length)];
+}
+
+var randomGeldSleutel = [345, 924, 435, 603, 538, 738, 678, 492, 932, 1134, 592, 374, 458, 659, 893, 932, 623, 959, 1209, 1284 ];
